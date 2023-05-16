@@ -1,19 +1,18 @@
 {
   "development": {
-    "username": "root",
-    "password": "9y6L8jebwUJoTmvfUegg",
-    "database": "railway",
-    "host": "containers-us-west-45.railway.app",
-    "dialect": "mysql",
-    "port": 7366
+    "username": "akash",
+    "password": "olivia@2003",
+    "database": "skyincdb",
+    "host": "az007-sky-inc.mysql.database.azure.com",
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "9y6L8jebwUJoTmvfUegg",
+    "password": "95z2JFyUBHaBrA3EkHjX",
     "database": "railway",
-    "host": "containers-us-west-45.railway.app",
+    "host": "containers-us-west-113.railway.app",
     "dialect": "mysql",
-    "port": 7366
+    "port": 7717
   },
   "production": {
     "username": "akash",

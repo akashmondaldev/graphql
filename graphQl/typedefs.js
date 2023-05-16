@@ -15,9 +15,9 @@ const typeDefs = gql`
     type Todo {
         id: ID!
         title: String!
-        content: String
-        logo: String
-        userId: User
+        message: String
+        userId: String!
+        status: Int!
         createdAt: String!
         updatedAt: String!
     }
@@ -27,7 +27,7 @@ const typeDefs = gql`
         username: String!
         email: String!
         password: String!
-        posts: [Todo]
+        todos: [Todo!]
         createdAt: String!
         updatedAt: String!
     }
@@ -43,6 +43,18 @@ const typeDefs = gql`
         getUserDetails(token: String!): User!
     }
 
+    input CreateTodoInput {
+        title: String!
+        message: String!
+        imageUrl: String!
+        userId: String!
+        status: Int!
+        id: ID!
+        createdAt: String!
+        updatedAt: String!
+    }
+
+
     type Mutation {
         # Post
         createPost(title: String!, content: String!, imageUrl: String!,userId:String!): String!
@@ -52,8 +64,11 @@ const typeDefs = gql`
         createUser(username: String!, email: String!, password: String!):String!
         updateUser(userId: ID!, username: String!, email: String!, password: String!): String!
         deleteUser(userId: ID!): String!
-    }
-`;
+        # Todo
+        createTodo(input:CreateTodoInput!): String!
+        updateTodo(todoId: ID!, title: String!, message: String!, imageUrl: String!, status:Int!): String!
+        deleteTodo(todoId: ID!): String!
+    }`;
 
 module.exports = { typeDefs }
 

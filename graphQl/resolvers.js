@@ -1,15 +1,16 @@
 const { create, get, remove, update } = require("../controllers/post.controller")
 const { register, updateUser, removeUser, getUserDetails, login, getAllUsers, getUser } = require("../controllers/auth.controller")
+const { createTodo, updateTodo, removeTodo, getTodosByUserId} = require("../controllers/todo.controller")
+
 const resolvers = {
   Query: {
     // Post
     getPosts: async (_,) => { return await get() },
-    getPost: async (_, { postId }) => { },
     // User
     login: async (_, { email, password }) => { return await login({ email, password }) },
     getUserDetails: async (_, { token }) => { return await getUserDetails({ token }) },
     getUsers: async (_,) => { return await getAllUsers() },
-    getUser: async (_, { userEmail }) => { return await getUser({ userEmail })},
+    getUser: async (_, { userEmail }) => { return await getUser({ userEmail }) },
   },
 
   Mutation: {
@@ -23,6 +24,16 @@ const resolvers = {
     deletePost: async (_, { postId }) => {
       return await remove({ postId })
     },
+    // todo
+    createTodo: async (_, {input}) => {
+      return await createTodo({input})
+    },
+    updateTodo: async (_, { todoId, title, message, imageUrl, status }) => {
+      return await updateTodo({ todoId, title, message, imageUrl, status })
+    },
+    deleteTodo: async (_, { todoId }) => {
+      return await removeTodo({ todoId })
+    },
     // user
     createUser: async (_, { username, email, password }) => {
       return await register({ username, email, password })
@@ -32,6 +43,12 @@ const resolvers = {
     },
     deleteUser: async (_, { userId }) => {
       return await removeUser({ userId })
+    },
+  },
+
+  User: {
+    todos: async (parent, args, context, info) => {
+      return await getTodosByUserId({ userId: parent.id })
     },
   },
 }
