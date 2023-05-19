@@ -1,11 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "95z2JFyUBHaBrA3EkHjX",
-    "database": "railway",
-    "host": "containers-us-west-113.railway.app",
-    "dialect": "mysql",
-    "port": 7717
+   "username": "akash",
+    "password": "olivia@2003",
+    "database": "skyincdb",
+    "host": "az007-sky-inc.mysql.database.azure.com",
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
